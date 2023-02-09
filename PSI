@@ -6,7 +6,7 @@
 
 td,
 th {
-    border: 1px solid rgb(190, 190, 190);
+    border: 1px solid rgb(214, 219, 223);
     padding: 10px;
 }
 
@@ -15,16 +15,16 @@ td {
 }
 
 tr:nth-child(even) {
-    background-color: #eee;
+    background-color: #EAECEE;
 }
 
 th[scope='col'] {
-    background-color: #696969;
+    background-color: #B0BEC5;
     color: #fff;
 }
 
 th[scope='row'] {
-    background-color: #d7d9f2;
+    background-color: #E3F2FD;
 }
 
 caption {
@@ -34,7 +34,7 @@ caption {
 
 table {
     border-collapse: collapse;
-    border: 2px solid rgb(200, 200, 200);
+    border: 2px solid rgb(245, 245, 245);
     letter-spacing: 1px;
     font-family: sans-serif;
     font-size: 0.8rem;
@@ -57,10 +57,14 @@ table {
   </tbody>
 </table>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
 
 fetch('https://api.data.gov.sg/v1/environment/psi')
   .then(response => response.json())
   .then(data => {
+  
     let tableBody = document.getElementById('tableBody');
     data.forEach(element => {
       let row = tableBody.insertRow();
@@ -79,3 +83,16 @@ fetch('https://api.data.gov.sg/v1/environment/psi')
       southCell.innerHTML = element.south;
     });
   });
+let timestamp = data.items[0].update_timestamp;
+    let readings = data.items[0].readings;
+    console.log(timestamp);
+    console.log(readings);
+    
+    $("#timestring").text(timestamp);
+  
+  });
+
+
+</script>
+</body>
+</html>
